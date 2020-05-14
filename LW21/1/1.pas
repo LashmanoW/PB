@@ -85,7 +85,9 @@ BEGIN {Encryption}
       {распечатать кодированное сообщение}
       IF I <> 0
       THEN
-        Encode(Msg, StrLength);
+        Encode(Msg, StrLength)
+      ELSE
+        WRITELN;
       WRITELN('{ Message length is ', StrLength, ' }')      
     END    
 END.  {Encryption}
