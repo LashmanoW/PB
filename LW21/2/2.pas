@@ -19,11 +19,11 @@ PROCEDURE Initialize(VAR Code: Chiper; VAR Error: BOOLEAN);
 VAR  
   InitializeFile: TEXT;
   W1, W2, W3: CHAR;
-  UserChar: SET OF CHAR;
+  UsersChar: SET OF CHAR;
 BEGIN {Initialize}  
   ASSIGN(InitializeFile, 'Initialize.txt');
   RESET(InitializeFile);
-  UserChar := [];
+  UsersChar := [];
   WHILE NOT EOF(InitializeFile) AND NOT Error
   DO
     BEGIN
@@ -34,10 +34,10 @@ BEGIN {Initialize}
           W2 := W3;
           READ(InitializeFile, W3)
         END;      
-      IF ((W1 IN ['A' .. 'Z']) AND (W2 = '=') AND (NOT(W3 IN UserChar)))
+      IF ((W1 IN ['A' .. 'Z']) AND (W2 = '=') AND (NOT(W3 IN UsersChar)))
       THEN
         BEGIN
-          UserChar := UserChar + [W3];
+          UsersChar := UsersChar + [W3];
           Code[W1] := W3  
         END
       ELSE
