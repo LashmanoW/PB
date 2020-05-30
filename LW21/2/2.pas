@@ -79,8 +79,7 @@ BEGIN {Encryption}
   DO
     BEGIN
       {читать строку в Msg и распечатать ее}
-      I := 0;
-      
+      I := 0;         
       WHILE NOT EOLN(INPUT) AND (I < Len)
       DO
         BEGIN
