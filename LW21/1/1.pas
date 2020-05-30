@@ -10,8 +10,7 @@ TYPE
 VAR
   Msg: Str;
   Code: Chiper;
-  I: MsgLen;
-  StrLength: MsgLen;
+  I: MsgLen;    
 
 PROCEDURE Initialize(VAR Code: Chiper);
 {Присвоить Code шифр замены}
@@ -70,13 +69,11 @@ BEGIN {Encryption}
   DO
     BEGIN
       {читать строку в Msg и распечатать ее}
-      I := 0;
-      StrLength := I;
+      I := 0;       
       WHILE NOT EOLN AND (I < Len)
       DO
         BEGIN
-          I := I + 1;
-          StrLength := I;
+          I := I + 1;            
           READ(Msg[I]);
           WRITE(Msg[I])
         END;
@@ -85,10 +82,10 @@ BEGIN {Encryption}
       {распечатать кодированное сообщение}
       IF I <> 0
       THEN
-        Encode(Msg, StrLength)
+        Encode(Msg, I)
       ELSE
         WRITELN;
-      WRITELN('{ Message length is ', StrLength, ' }')      
+      WRITELN('{ Message length is ', I, ' }')      
     END    
 END.  {Encryption}
 

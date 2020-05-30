@@ -10,8 +10,7 @@ TYPE
 VAR
   Msg: Str;
   Code: Chiper;
-  I: MsgLen;
-  StrLength: MsgLen;
+  I: MsgLen;      
   Error: BOOLEAN;
   UsersChar: SET OF CHAR;
 
@@ -24,6 +23,9 @@ BEGIN {Initialize}
   ASSIGN(InitializeFile, 'Initialize.txt');
   RESET(InitializeFile);
   UsersChar := [];
+  W1 := '';
+  W2 := '';
+  W3 := '';
   WHILE NOT EOF(InitializeFile) AND NOT Error
   DO
     BEGIN
@@ -50,12 +52,12 @@ BEGIN {Initialize}
   CLOSE(InitializeFile)  
 END;  {Initialize}
  
-PROCEDURE Encode(VAR S: Str; StrLength: MsgLen);
+PROCEDURE Decrypt(VAR S: Str; StrLength: MsgLen);
 {¬ыводит символы из Code, соответствующие символам из S}
 VAR
   Index: MsgLen;
   SomeChar: 'A' .. 'Z';
-BEGIN {Encode}
+BEGIN {Decrypt}
   FOR Index := 1 TO StrLength
   DO
     IF S[Index] IN UsersChar
@@ -74,7 +76,7 @@ BEGIN {Encode}
       ELSE
         WRITE(OUTPUT, S[Index]);          
   WRITELN(OUTPUT)        
-END;  {Encode}
+END;  {Decrypt}
  
 BEGIN {Decryption}
   {»нициализировать Code}
@@ -84,25 +86,30 @@ BEGIN {Decryption}
   DO
     BEGIN
       {читать строку в Msg и распечатать ее}
-      I := 0;
-      StrLength := I;
+      I := 0;         
       WHILE NOT EOLN(INPUT) AND (I < Len)
       DO
         BEGIN
-          I := I + 1;
-          StrLength := I;
+          I := I + 1;           
           READ(INPUT, Msg[I]);
           WRITE(OUTPUT, Msg[I])
         END;
+      WRITELN(OUTPUT);  
+      IF NOT EOLN(INPUT)
+      THEN
+        BEGIN
+          Error := TRUE;
+          WRITE(OUTPUT, '{ Error: Message exceeds 20 characters per line }')
+        END;    
       READLN(INPUT);        
       WRITELN(OUTPUT);
       {распечатать кодированное сообщение}
       IF I <> 0
       THEN
-        Encode(Msg, StrLength)
+        Decrypt(Msg, I)
       ELSE
         WRITELN(OUTPUT);
-      WRITELN(OUTPUT, '{ Message length is ', StrLength, ' }')      
+      WRITELN(OUTPUT, '{ Message length is ', I, ' }')      
     END    
 END.  {Decryption}
 

@@ -10,8 +10,7 @@ TYPE
 VAR
   Msg: Str;
   Code: Chiper;
-  I: MsgLen;
-  StrLength: MsgLen;
+  I: MsgLen;    
   Error: BOOLEAN;
 
 PROCEDURE Initialize(VAR Code: Chiper; VAR Error: BOOLEAN);
@@ -24,6 +23,9 @@ BEGIN {Initialize}
   ASSIGN(InitializeFile, 'Initialize.txt');
   RESET(InitializeFile);
   UsersChar := [];
+  W1 := '';
+  W2 := '';
+  W3 := '';
   WHILE NOT EOF(InitializeFile) AND NOT Error
   DO
     BEGIN
@@ -78,12 +80,11 @@ BEGIN {Encryption}
     BEGIN
       {читать строку в Msg и распечатать ее}
       I := 0;
-      StrLength := I;
+      
       WHILE NOT EOLN(INPUT) AND (I < Len)
       DO
         BEGIN
-          I := I + 1;
-          StrLength := I;
+          I := I + 1;           
           READ(INPUT, Msg[I]);
           WRITE(OUTPUT, Msg[I])
         END;
@@ -92,10 +93,10 @@ BEGIN {Encryption}
       {распечатать кодированное сообщение}
       IF I <> 0
       THEN
-        Encode(Msg, StrLength)
+        Encode(Msg, I)
       ELSE
         WRITELN(OUTPUT);
-      WRITELN(OUTPUT, '{ Message length is ', StrLength, ' }')      
+      WRITELN(OUTPUT, '{ Message length is ', I, ' }')      
     END    
 END.  {Encryption}
 
