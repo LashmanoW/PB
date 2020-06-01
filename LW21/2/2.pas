@@ -22,31 +22,29 @@ VAR
 BEGIN {Initialize}  
   ASSIGN(InitializeFile, 'Initialize.txt');
   RESET(InitializeFile);
-  UsersChar := [];
-  W1 := '';
-  W2 := '';
-  W3 := '';
+  UsersChar := [];     
   WHILE NOT EOF(InitializeFile) AND NOT Error
   DO
     BEGIN
-      WHILE NOT EOLN(InitializeFile)
-      DO
-        BEGIN
-          W1 := W2;
-          W2 := W3;
-          READ(InitializeFile, W3)
-        END;      
-      IF ((W1 IN ['A' .. 'Z']) AND (W2 = '=') AND (NOT(W3 IN UsersChar)))
+      IF NOT EOLN(InitializeFile)
+      THEN 
+        READ(InitializeFile, W1);
+      IF NOT EOLN(InitializeFile)
+      THEN 
+        READ(InitializeFile, W2);
+      IF NOT EOLN(InitializeFile)
+      THEN 
+        READ(InitializeFile, W3)
+      ELSE
+       Error := TRUE;          
+      IF ((NOT Error) AND (W1 IN ['A' .. 'Z']) AND (W2 = '=') AND (NOT(W3 IN UsersChar)))
       THEN
         BEGIN
           UsersChar := UsersChar + [W3];
           Code[W1] := W3  
         END
-      ELSE
-        BEGIN
-          Error := TRUE;
-          WRITELN(OUTPUT, ' Error: invalid values')
-        END;
+      ELSE                      
+        WRITELN(OUTPUT, ' Error: invalid values');       
       READLN(InitializeFile)   
     END;
   CLOSE(InitializeFile)  
