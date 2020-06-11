@@ -10,7 +10,7 @@ VAR
   Ch: CHAR;
   
 PROCEDURE Insert(VAR Ptr: Tree; Data: CHAR);
-BEGIN{Insert}
+BEGIN  {Insert}
   IF Ptr = NIL
   THEN
     BEGIN  {Создаем лист со значением Data}
@@ -27,10 +27,10 @@ BEGIN{Insert}
     ELSE       
       Insert(Ptr^.RLink, Data)    
   END           
-END;{Insert}
+END;  {Insert}
 
 PROCEDURE PrintTree(Ptr: Tree);
-BEGIN{PrintTree}
+BEGIN  {PrintTree}
   IF Ptr <> NIL
   THEN 
     BEGIN  {Печатает поддерево слева, вершину, поддерево справа}
@@ -38,9 +38,9 @@ BEGIN{PrintTree}
       WRITE(Ptr^.Ch);
       PrintTree(Ptr^.RLink)
     END
-END;{PrintTree}
+END;  {PrintTree}
 
-BEGIN{TreeSort}
+BEGIN  {TreeSort}
   Root := NIL;
   WHILE NOT EOLN
   DO
@@ -49,4 +49,4 @@ BEGIN{TreeSort}
       Insert(Root, Ch)
     END;
   PrintTree(Root)
-END.{TreeSort}
+END.  {TreeSort}

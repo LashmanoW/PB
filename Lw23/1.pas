@@ -8,7 +8,8 @@ TYPE
 VAR
   FirstPtr, NewPtr, Curr, Prev: NodePtr;
   Found: BOOLEAN;
-BEGIN{InsertSort2}
+  
+BEGIN  {InsertSort2}
   FirstPtr := NIL;
   WHILE NOT EOLN
   DO
@@ -45,6 +46,6 @@ BEGIN{InsertSort2}
       WRITE(NewPtr^.Key);
       NewPtr := NewPtr^.Next
     END
-END.{InsertSort2}
+END.  {InsertSort2}
 
 

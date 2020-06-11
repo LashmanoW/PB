@@ -15,6 +15,7 @@ VAR
   Prev, Curr: 0 .. Max;  
   Extra: CHAR;
   Found: BOOLEAN;
+  
 BEGIN {InsertionSort}
   First := 0;
   Index := 0;
@@ -56,7 +57,7 @@ BEGIN {InsertionSort}
             ELSE
               Arr[Prev].Next := Index                
         END
-    END; {WHILE}
+    END;
     {Печать списка начиная с Arr[First]}
     Index := First;
     WHILE Index <> ListEnd
