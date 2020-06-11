@@ -8,6 +8,7 @@ TYPE
 VAR
   Root: Tree;
   Ch: CHAR;
+  
 PROCEDURE Insert(VAR Ptr: Tree; Data: CHAR);
 BEGIN{Insert}
   IF Ptr = NIL
