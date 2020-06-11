@@ -3,7 +3,7 @@ TYPE
   Tree = ^NodeType;
   NodeType = RECORD
                Ch: CHAR;
-               LLink, RLink: Tree;
+               LLink, RLink: Tree
              END;
 VAR
   Root: Tree;
@@ -21,8 +21,6 @@ BEGIN{Insert}
     END
   ELSE
   BEGIN
-  WRITELN('Data IS ', Data);
-  WRITELN('Ptr^.Ch IS ', Ptr^.Ch);
     IF Data <= Ptr^.Ch
     THEN 
       Insert(Ptr^.LLink, Data)
