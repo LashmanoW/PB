@@ -7,7 +7,7 @@ TYPE
   RecArray = ARRAY [1 .. Max] OF 
                RECORD
                  Key: CHAR;
-                 Next: 0 .. Max;
+                 Next: 0 .. Max
                END;
 VAR
   Arr: RecArray;
