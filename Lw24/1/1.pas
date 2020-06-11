@@ -39,7 +39,7 @@ BEGIN{PrintTree}
       PrintTree(Ptr^.LLink);
       WRITE(Ptr^.Ch);
       PrintTree(Ptr^.RLink)
-    END;
+    END
 END;{PrintTree}
 
 BEGIN{TreeSort}
@@ -52,5 +52,3 @@ BEGIN{TreeSort}
     END;
   PrintTree(Root)
 END.{TreeSort}
-
-
