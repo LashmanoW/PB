@@ -19,14 +19,12 @@ BEGIN  {Insert}
       Ptr^.LLink := NIL;
       Ptr^.RLink := NIL
     END
-  ELSE
-  BEGIN
+  ELSE  
     IF Data <= Ptr^.Ch
     THEN 
       Insert(Ptr^.LLink, Data)
     ELSE       
-      Insert(Ptr^.RLink, Data)    
-  END           
+      Insert(Ptr^.RLink, Data) 
 END;  {Insert}
 
 PROCEDURE PrintTree(Ptr: Tree);
