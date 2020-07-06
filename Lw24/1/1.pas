@@ -27,7 +27,7 @@ BEGIN  {Insert}
       Insert(Ptr^.RLink, Data) 
 END;  {Insert}
 
-PROCEDURE PrintTree(Ptr: Tree);
+PROCEDURE PrintTree(VAR Ptr: Tree);
 BEGIN  {PrintTree}
   IF Ptr <> NIL
   THEN 
