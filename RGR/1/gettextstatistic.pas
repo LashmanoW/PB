@@ -2,7 +2,7 @@ UNIT GetTextStatistic;
 
 INTERFACE
   USES 
-    GetStringWord, TreeSort, ConstAndTypes; 
+    ConstAndTypes, GetStringWord, TreeSort; 
            
   PROCEDURE GetStatistic;  {Получить статистику}   
 IMPLEMENTATION
@@ -13,21 +13,22 @@ IMPLEMENTATION
   VAR     
     Root: Tree;
     CountWord: INTEGER;
-    SomeWord: WordString; 
+    SomeWord: WordString;
+    FindWord: BOOLEAN; 
   BEGIN 
     Root := NIL;
     CountWord := 0;
     WHILE NOT(EOF(Fin))
     DO
       BEGIN         
-        SomeWord := GetWord(Fin);
-        IF SomeWord <> ''
+        GetWord(Fin, SomeWord, FindWord);
+        IF FindWord
         THEN 
           BEGIN      
             Insert(Root, SomeWord);
             CountWord :=  CountWord + 1
-          END  
-      END; 
+          END     
+      END;       
    {Выводим общее количество слов}    
    WRITELN(Fout, 'All words: ', CountWord);   
    {Выводим статистику каждого слова} 
