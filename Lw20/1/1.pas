@@ -2,6 +2,9 @@ PROGRAM WriteSymbol(INPUT, OUTPUT);
 CONST
   Min = 0;
   Max = 25;
+  DrawingSymbol = 'X';
+  SpaceSymbol = ' ';
+  SymbolWidth = 5;
 TYPE
   Matrix = SET OF Min..Max;
 VAR
@@ -51,10 +54,10 @@ BEGIN  {WriteMatrixSymbol}
     BEGIN
       IF (Count IN MatrixSymbol)
       THEN
-        WRITE('X')
+        WRITE(DrawingSymbol)
       ELSE
-        WRITE(' ');
-      IF (COUNT MOD 5 = 0)
+        WRITE(SpaceSymbol);
+      IF (COUNT MOD SymbolWidth = 0)
       THEN
         WRITELN
     END
