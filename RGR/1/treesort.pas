@@ -4,9 +4,9 @@ INTERFACE
   USES 
     ConstAndTypes;
                        
-  PROCEDURE Insert(VAR Ptr: Tree; Data: WordString); {Добавить слово в дерево}
+  PROCEDURE Insert(VAR Ptr: Tree; Data: WordString);  {Добавить слово в дерево}
   PROCEDURE PrintTree(VAR Ptr: Tree; VAR Fout: TEXT);  {Распечатать дерево}
-  PROCEDURE CleanTree(VAR Ptr: Tree);  {Очистить дерево}  
+  PROCEDURE CleanTree(VAR Ptr: Tree);  {Очистить дерево} 
 IMPLEMENTATION  
   PROCEDURE Insert(VAR Ptr: Tree; Data: WordString);
   BEGIN  {Insert}

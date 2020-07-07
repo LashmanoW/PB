@@ -6,11 +6,19 @@ INTERFACE
      
   FUNCTION GetWord(VAR Fin: TEXT): WordString; {Считываем слово}      
 IMPLEMENTATION
-  PROCEDURE NewWord(VAR Fin: TEXT);
-  BEGIN     
-    WHILE NOT(EOF(Fin)) AND NOT(Fin^ IN ValidAlphabet)
-    DO 
-       GET(Fin)           
+  FUCTION NewWord(VAR Fin: TEXT): CHAR;
+  VAR 
+    Ch: CHAR ;
+  BEGIN
+    IF NOT(EOF(Fin))
+    THEN
+      BEGIN       
+        READ(Fin, Ch);
+        WHILE NOT(Ch IN ValidAlphabet)
+        THEN
+          READ(Fin, Ch) 
+      END;
+    NewWord := Ch             
   END;
   
   FUNCTION UpToLower(VAR Ch: CHAR): CHAR;
@@ -28,17 +36,22 @@ IMPLEMENTATION
 
   FUNCTION GetWord(VAR Fin: TEXT): WordString;
   VAR
-    SomeWord: WordString;  
+    SomeWord: WordString;
+    Ch: CHAR;  
   BEGIN
-    {Пропускаем все невалидные символы}
-    NewWord(Fin);
-    SomeWord := '';
-    WHILE NOT(EOF(Fin)) AND (Fin^ IN ValidAlphabet)
-    DO
-      BEGIN {Посимвольно собираем слово, преобразуя символы верхнего регистра в нижний и заменяя Ё и ё на е}            
-        SomeWord := SomeWord + UpToLower(Fin^);                
-        GET(Fin)           
-      END;          
+    {Пропускаем все невалидные символы}     
+    SomeWord := NewWord(Fin);
+    IF NOT(EOF(Fin))
+    THEN
+      BEGIN
+        READ(Fin, Ch);
+        WHILE NOT(EOF(Fin)) AND (Ch IN ValidAlphabet)
+        DO
+          BEGIN {Посимвольно собираем слово, преобразуя символы верхнего регистра в нижний и заменяя Ё и ё на е}            
+            SomeWord := SomeWord + UpToLower(Ch);                
+            READ(Fin, Ch)           
+          END
+      END;             
     GetWord := SomeWord           
   END;
   
