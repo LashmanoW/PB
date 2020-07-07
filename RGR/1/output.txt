@@ -1,1 +1,4 @@
-All words: 0
+All words: 7
+р 2
+рс 2
+рст 3

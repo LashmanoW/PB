@@ -10,10 +10,14 @@ IMPLEMENTATION
   VAR 
     Ch: CHAR;
   BEGIN
-    READ(Fin, Ch);
-    WHILE NOT(EOF(Fin)) AND NOT(Ch IN ValidAlphabet)
-    DO
-      READ(Fin, Ch);
+    IF NOT((EOF(Fin)))
+    THEN
+      BEGIN
+        READ(Fin, Ch);
+        WHILE NOT(EOF(Fin)) AND NOT(Ch IN ValidAlphabet)
+        DO
+          READ(Fin, Ch);
+      END;    
     NewWord := Ch             
   END;
   
@@ -41,16 +45,15 @@ IMPLEMENTATION
     IF (Ch IN ValidAlphabet)
     THEN
       FindWord := TRUE; 
-    IF NOT(EOF(Fin))
-    THEN
-      BEGIN 
+
                        
-        WHILE NOT(EOF(Fin)) AND (Ch IN ValidAlphabet)
-        DO
-          BEGIN {ѕосимвольно собираем слово, преобразу€ символы верхнего регистра в нижний и замен€€ ® и Є на е}   
-            READ(Fin, Ch);         
-            SomeWord := SomeWord + UpToLower(Ch)
-          END
+    WHILE NOT(EOF(Fin)) AND (Ch IN ValidAlphabet)
+    DO
+      BEGIN {ѕосимвольно собираем слово, преобразу€ символы верхнего регистра в нижний и замен€€ ® и Є на е}
+        READ(Fin, Ch);  
+        IF (Ch IN ValidAlphabet)  
+        THEN         
+          SomeWord := SomeWord + UpToLower(Ch)         
       END    
   END;
   
