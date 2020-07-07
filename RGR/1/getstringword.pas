@@ -44,9 +44,7 @@ IMPLEMENTATION
     SomeWord := UpToLower(Ch);    
     IF (Ch IN ValidAlphabet)
     THEN
-      FindWord := TRUE; 
-
-                       
+      FindWord := TRUE;
     WHILE NOT(EOF(Fin)) AND (Ch IN ValidAlphabet)
     DO
       BEGIN {ѕосимвольно собираем слово, преобразу€ символы верхнего регистра в нижний и замен€€ ® и Є на е}
