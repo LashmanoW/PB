@@ -8,8 +8,9 @@ INTERFACE
 IMPLEMENTATION
   FUCTION NewWord(VAR Fin: TEXT): CHAR;
   VAR 
-    Ch: CHAR ;
+    Ch: CHAR;
   BEGIN
+    Ch := '';
     IF NOT(EOF(Fin))
     THEN
       BEGIN       
