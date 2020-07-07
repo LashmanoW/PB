@@ -44,12 +44,12 @@ IMPLEMENTATION
     IF NOT(EOF(Fin))
     THEN
       BEGIN 
-        READ(Fin, Ch);               
+                       
         WHILE NOT(EOF(Fin)) AND (Ch IN ValidAlphabet)
         DO
-          BEGIN {ѕосимвольно собираем слово, преобразу€ символы верхнего регистра в нижний и замен€€ ® и Є на е}            
-            SomeWord := SomeWord + UpToLower(Ch);                
-            READ(Fin, Ch)           
+          BEGIN {ѕосимвольно собираем слово, преобразу€ символы верхнего регистра в нижний и замен€€ ® и Є на е}   
+            READ(Fin, Ch);         
+            SomeWord := SomeWord + UpToLower(Ch)
           END
       END    
   END;
