@@ -10,14 +10,10 @@ IMPLEMENTATION
   VAR 
     Ch: CHAR;
   BEGIN
-    IF NOT(EOF(Fin))
-    THEN
-      BEGIN     
-        READ(Fin, Ch);
-        WHILE NOT(EOF(Fin)) AND NOT(Ch IN ValidAlphabet)
-        DO
-          READ(Fin, Ch)  
-      END;
+    READ(Fin, Ch);
+    WHILE NOT(EOF(Fin)) AND NOT(Ch IN ValidAlphabet)
+    DO
+      READ(Fin, Ch);
     NewWord := Ch             
   END;
   

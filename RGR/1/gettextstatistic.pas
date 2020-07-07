@@ -5,17 +5,21 @@ INTERFACE
     ConstAndTypes, GetStringWord, TreeSort; 
            
   PROCEDURE GetStatistic;  {Получить статистику}   
-IMPLEMENTATION
-  VAR
-    Fin, Fout: TEXT;
-    
+IMPLEMENTATION    
   PROCEDURE GetStatistic; 
   VAR     
     Root: Tree;
     CountWord: INTEGER;
     SomeWord: WordString;
-    FindWord: BOOLEAN; 
-  BEGIN 
+    FindWord: BOOLEAN;
+    Fin, Fout: TEXT; 
+  BEGIN
+    {Подключаем файлы input и output}
+    ASSIGN(Fin, 'input.txt');
+    ASSIGN(Fout, 'output.txt');
+    {Подготавливаем файлы к использованию}
+    RESET(Fin);
+    REWRITE(Fout); 
     Root := NIL;
     CountWord := 0;
     WHILE NOT(EOF(Fin))
@@ -38,12 +42,6 @@ IMPLEMENTATION
   END;
   
 BEGIN {GetTextStatistic}
-  {Подключаем файлы input и output}
-  ASSIGN(Fin, 'input.txt');
-  ASSIGN(Fout, 'output.txt');
-  {Подготавливаем файлы к использованию}
-  RESET(Fin);
-  REWRITE(Fout)
 END. {GetTextStatistic}
 
 

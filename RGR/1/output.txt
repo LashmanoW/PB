@@ -1,9 +1,1 @@
-All words: 12
-a 2
-aa 2
-aaa 2
-aab 1
-iiieiìôù 1
-ìôù 1
-ìôùiiiei 1
-ô 2
+All words: 0
