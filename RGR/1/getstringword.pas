@@ -16,7 +16,7 @@ IMPLEMENTATION
         READ(Fin, Ch);
         WHILE NOT(EOF(Fin)) AND NOT(Ch IN ValidAlphabet)
         DO
-          READ(Fin, Ch);
+          READ(Fin, Ch)
       END;    
     NewWord := Ch             
   END;
