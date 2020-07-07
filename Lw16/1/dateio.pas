@@ -4,8 +4,8 @@ INTERFACE
   TYPE
     Month = (NoMonth, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC);
   
-  PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);  {—читываем мес€ц}
-  PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month);  {—читываем мес€ц}
+  PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);  
+  PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month);  
 IMPLEMENTATION
   PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
   VAR
