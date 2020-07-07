@@ -36,9 +36,9 @@ BEGIN  {DefineSymbol}
     'W': MatrixSymbol := [1, 5, 6, 10, 11, 13, 15, 16, 18, 20, 22, 24];
     'X': MatrixSymbol := [1, 5, 7, 9, 13, 17, 19, 21, 25];
     'Y': MatrixSymbol := [1, 5, 7, 9, 13, 18, 23];
-    'Z': MatrixSymbol := [1, 2, 3, 4, 5, 9, 13, 17, 21, 22, 23, 24, 25];
+    'Z': MatrixSymbol := [1, 2, 3, 4, 5, 9, 13, 17, 21, 22, 23, 24, 25]
   ELSE
-    MatrixSymbol := [];
+    MatrixSymbol := []
   END
 END;  {DefineSymbol}
 
