@@ -9,7 +9,7 @@ VAR
   Root: Tree;
   Ch: CHAR;
   
-PROCEDURE Insert(VAR Ptr: Tree; Data: CHAR);
+PROCEDURE Insert(VAR Ptr: Tree; VAR Data: CHAR);
 BEGIN  {Insert}
   IF Ptr = NIL
   THEN
