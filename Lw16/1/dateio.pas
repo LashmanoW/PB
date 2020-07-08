@@ -7,40 +7,41 @@ INTERFACE
   PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);  
   PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month);  
 IMPLEMENTATION
+  PROCEDURE CheckMonth(VAR FIn: TEXT; VAR Mo: Month; VAR Ch: CHAR);
+  BEGIN
+    IF NOT(EOLN(FIn))
+    THEN
+      READ(FIn, Ch)
+    ELSE
+      Mo := NoMonth 
+  END;
+
   PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
   VAR
     Ch1, Ch2, Ch3: CHAR;
   BEGIN {ReadMonth}
-    IF NOT EOLN(FIn)
+    Mo:= NoMonth; 
+    CheckMonth(FIn, Mo, Ch1);
+    CheckMonth(FIn, Mo, Ch2);
+    CheckMonth(FIn, Mo, Ch3);
+    IF Mo <> NoMonth
     THEN
       BEGIN
-        READ(FIn, Ch1);
-        IF NOT EOLN(FIn)
-        THEN
-          BEGIN
-            READ(FIn, Ch2);
-            IF NOT EOLN(FIn)
-            THEN
-              BEGIN
-                 READ(FIn, Ch3);
-                 IF (Ch1 = 'J') AND (Ch2 = 'A') AND (Ch3 = 'N') THEN Mo := JAN ELSE
-                 IF (Ch1 = 'F') AND (Ch2 = 'E') AND (Ch3 = 'B') THEN Mo := FEB ELSE
-                 IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'R') THEN Mo := MAR ELSE
-                 IF (Ch1 = 'A') AND (Ch2 = 'P') AND (Ch3 = 'R') THEN Mo := APR ELSE
-                 IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'Y') THEN Mo := MAY ELSE
-                 IF (Ch1 = 'J') AND (Ch2 = 'U') AND (Ch3 = 'N') THEN Mo := JUN ELSE
-                 IF (Ch1 = 'J') AND (Ch2 = 'U') AND (Ch3 = 'L') THEN Mo := JUL ELSE
-                 IF (Ch1 = 'A') AND (Ch2 = 'U') AND (Ch3 = 'G') THEN Mo := AUG ELSE
-                 IF (Ch1 = 'S') AND (Ch2 = 'E') AND (Ch3 = 'P') THEN Mo := SEP ELSE
-                 IF (Ch1 = 'O') AND (Ch2 = 'C') AND (Ch3 = 'T') THEN Mo := OCT ELSE
-                 IF (Ch1 = 'N') AND (Ch2 = 'O') AND (Ch3 = 'V') THEN Mo := NOV ELSE
-                 IF (Ch1 = 'D') AND (Ch2 = 'E') AND (Ch3 = 'C') THEN Mo := DEC ELSE
-                 Mo:= NoMonth
-              END               
-          END
+        READ(FIn, Ch3);
+        IF (Ch1 = 'J') AND (Ch2 = 'A') AND (Ch3 = 'N') THEN Mo := JAN ELSE
+        IF (Ch1 = 'F') AND (Ch2 = 'E') AND (Ch3 = 'B') THEN Mo := FEB ELSE
+        IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'R') THEN Mo := MAR ELSE
+        IF (Ch1 = 'A') AND (Ch2 = 'P') AND (Ch3 = 'R') THEN Mo := APR ELSE
+        IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'Y') THEN Mo := MAY ELSE
+        IF (Ch1 = 'J') AND (Ch2 = 'U') AND (Ch3 = 'N') THEN Mo := JUN ELSE
+        IF (Ch1 = 'J') AND (Ch2 = 'U') AND (Ch3 = 'L') THEN Mo := JUL ELSE
+        IF (Ch1 = 'A') AND (Ch2 = 'U') AND (Ch3 = 'G') THEN Mo := AUG ELSE
+        IF (Ch1 = 'S') AND (Ch2 = 'E') AND (Ch3 = 'P') THEN Mo := SEP ELSE
+        IF (Ch1 = 'O') AND (Ch2 = 'C') AND (Ch3 = 'T') THEN Mo := OCT ELSE
+        IF (Ch1 = 'N') AND (Ch2 = 'O') AND (Ch3 = 'V') THEN Mo := NOV ELSE
+        IF (Ch1 = 'D') AND (Ch2 = 'E') AND (Ch3 = 'C') THEN Mo := DEC ELSE
+        Mo:= NoMonth
       END
-    ELSE
-      Mo:= NoMonth 
   END;  {ReadMonth}
  
   PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month); 
