@@ -8,7 +8,7 @@ BEGIN
   W1 := W2;
   W2 := W3;
   W3 := W4;
-  READ(W4);    
+  READ(W4)    
 END; 
 
 PROCEDURE CheckLand(VAR Land: BOOLEAN; VAR W1, W2, W3, W4: CHAR);
