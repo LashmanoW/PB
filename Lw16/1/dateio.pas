@@ -7,27 +7,28 @@ INTERFACE
   PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);  
   PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month);  
 IMPLEMENTATION
-  PROCEDURE CheckMonth(VAR FIn: TEXT; VAR Mo: Month; VAR Ch: CHAR);
+  PROCEDURE CheckMonth(VAR FIn: TEXT; VAR Ch, MonthChecker: CHAR);
   BEGIN
     IF NOT(EOLN(FIn))
     THEN
-      READ(FIn, Ch)
+      BEGIN
+        READ(FIn, Ch);
+        MonthChecker := 'Y' 
+      END      
     ELSE
-      Mo := NoMonth 
+      MonthChecker := 'N'
   END;
 
   PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
   VAR
-    Ch1, Ch2, Ch3: CHAR;
-  BEGIN {ReadMonth}
-    Mo:= NoMonth; 
-    CheckMonth(FIn, Mo, Ch1);
-    CheckMonth(FIn, Mo, Ch2);
-    CheckMonth(FIn, Mo, Ch3);
-    IF Mo <> NoMonth
+    Ch1, Ch2, Ch3, MonthChecker: CHAR;
+  BEGIN {ReadMonth}           
+    CheckMonth(FIn, Ch1, MonthChecker);
+    CheckMonth(FIn, Ch2, MonthChecker);
+    CheckMonth(FIn, Ch3, MonthChecker);
+    IF MonthChecker = 'Y'
     THEN
-      BEGIN
-        READ(FIn, Ch3);
+      BEGIN         
         IF (Ch1 = 'J') AND (Ch2 = 'A') AND (Ch3 = 'N') THEN Mo := JAN ELSE
         IF (Ch1 = 'F') AND (Ch2 = 'E') AND (Ch3 = 'B') THEN Mo := FEB ELSE
         IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'R') THEN Mo := MAR ELSE

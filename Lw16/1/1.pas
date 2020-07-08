@@ -13,7 +13,7 @@ BEGIN
     IF Mo1 = Mo2
     THEN
       BEGIN
-        WRITELN(OUTPUT, 'ќба мес€ца ');
+        WRITE(OUTPUT, 'ќба мес€ца ');
         WriteMonth(OUTPUT, Mo2)
       END
     ELSE
