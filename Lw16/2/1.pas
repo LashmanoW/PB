@@ -40,10 +40,12 @@ BEGIN {SarahRevere}
   Sea := FALSE;  
   IF NOT EOLN
   THEN
-    READ(W4);
-  W3 := W4;
-  W2 := W3;
-  W1 := W2;  
+    BEGIN
+      READ(W4);
+      W3 := W4;
+      W2 := W3;
+      W1 := W2  
+    END;          
   WHILE NOT EOLN AND NOT (Land OR Sea)   
   DO
     BEGIN
