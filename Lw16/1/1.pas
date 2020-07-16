@@ -10,21 +10,25 @@ BEGIN
   THEN
     WRITELN('¬ходные данные записаны неверно')
   ELSE
-    IF Mo1 = Mo2
-    THEN
-      BEGIN
-        WRITE(OUTPUT, 'ќба мес€ца ');
-        WriteMonth(OUTPUT, Mo2)
-      END
-    ELSE
-      BEGIN
-        WriteMonth(OUTPUT, Mo1);
-        IF Mo1 < Mo2
-        THEN
-          WRITE(OUTPUT, ' предшествует ')
-        ELSE
-          WRITE(OUTPUT, ' следует за ');
-        WriteMonth(OUTPUT, Mo2);
-        WRITELN(OUTPUT)
-      END    
+    BEGIN
+      IF Mo1 < Mo2
+      THEN
+        BEGIN
+          WriteMonth(OUTPUT, Mo1);
+          WRITE(OUTPUT, ' предшествует ')        
+        END
+      ELSE
+        BEGIN        
+          IF Mo1 > Mo2
+          THEN
+            BEGIN
+              WriteMonth(OUTPUT, Mo1);
+              WRITE(OUTPUT, ' следует за ')
+            END
+          ELSE
+            WRITE(OUTPUT, 'ќба мес€ца ')         
+        END;          
+      WriteMonth(OUTPUT, Mo2);
+      WRITELN(OUTPUT)
+    END  
 END.
