@@ -37,15 +37,10 @@ END;
 BEGIN {SarahRevere}   
   {Инициализация} 
   Land := FALSE;
-  Sea := FALSE;  
-  IF NOT EOLN
-  THEN
-    BEGIN
-      READ(W4);
-      W3 := W4;
-      W2 := W3;
-      W1 := W2  
-    END;          
+  Sea := FALSE;   
+  W2 := '';
+  W3 := '';
+  W4 := '';             
   WHILE NOT EOLN AND NOT (Land OR Sea)   
   DO
     BEGIN
